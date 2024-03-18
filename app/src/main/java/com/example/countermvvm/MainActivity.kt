@@ -7,20 +7,19 @@ import com.example.countermvvm.databinding.ActivityMainBinding
 
 class MainActivity : AppCompatActivity() {
 
-    private lateinit var binding: ActivityMainBinding
+    private val binding by lazy { ActivityMainBinding.inflate(layoutInflater) }
 
     private val viewModel: CounterViewModel by viewModels()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
         initListeners()
         observe()
     }
 
     private fun observe() {
-        viewModel.count.observe(this) {count ->
+        viewModel.count.observe(this) { count ->
             binding.tvCount.text = count.toString()
         }
     }
