@@ -1,23 +1,17 @@
 package com.example.countermvvm
 
-import androidx.lifecycle.MutableLiveData
-
 class CounterModel {
 
-    private val _count: MutableLiveData<Int> = MutableLiveData()
+    private var _count: Int = 0
 
-    init {
-        _count.value = 0
-    }
-
-    fun getCount(): MutableLiveData<Int> = _count
+    fun getCount(): Int = _count
 
     fun dec() {
-        _count.value = _count.value!! - 1
+        _count--
     }
 
     fun inc() {
-        _count.value = _count.value!! + 1
+        _count++
     }
 
 }
